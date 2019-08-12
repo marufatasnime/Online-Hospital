@@ -1,18 +1,11 @@
-body{
-    background-image: url(../images/computer-desk-doctor-48604.jpg);   
-    background-size: cover;
-    background-color: white;
-    padding: 0px;
-
-}
-
 /*login page start*/
 
 .main{
     background-color: #563d7cbf;
-
+   
 }
-.WelcomeText{
+.welcome_text
+{
 /*       background-color: #563d7cbf;*/
     height: 102px;
     font-family: 'Roboto Mono', monospace;
@@ -22,32 +15,32 @@ body{
     margin: 20px 15%;
     width: 70%;
 }
-.Signup,.LogIn{
+.signup,.log_in{
 /*     background-color: #563d7cbf;*/
     color: white;
-    font-family: 'Roboto Mono', monospace;
+     font-family: 'Roboto Mono', monospace;
     padding: 20px;
     text-align: center;
-
+    
 }
-.SignupForm{
-
+.signup_form{
+    
 }
-.SignupForm Input,.LoginForm Input{
+.signup_form input,.login_form input{
     padding: 10px;
-    margin: 10px;
+    margin: 4px;
     align-items: center;
     text-align: center;
     border-radius: 8px;
     color: #563d7cbf;
 }
-.CoverImg{
+.cover_img{
     background-color: #ffffff80;
 }
-.ProIcon{
+.pro_icon{
     padding: 20px
 }
-.DoctorsMenu{
+.doctors_menu{
         background-color: #a5c0d3cf;
     color: white;
 }
@@ -57,48 +50,67 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
 /*home start*/
-.CustomTop{
+.custom_top{
     margin: 0px !important;
         padding-right: 0px !important;
     padding-left: 0px !important;
     background-color: #F4F4F4;
 }
-.ProIcon Img{
+
+.pro_icon img{
     height: 62px;
     width: 124px;
-   margin: 5px 0px 5px 130px;
-
+   margin: 5px 30px 5px 130px;
+    
 }
 .global-nav__item{
-
+    
        margin: 40px 0px;
 }
-.CustomMenu{
+
+.custom_menu{
     margin: 0px !important;
       background-color: #FC4236 !important;
     color: white !important;
     padding: 0px !important;
 }
-.CustomNavbar{
-   margin-left: 80px; 
 
+.custom_navbar{
+   margin-left: 80px; 
+  
 }
-.CustomNav{
+.custom_nav{
     padding: 10px 70px;
      color: white !important;
 
+    margin-left: 75px;
+
 }
-.CustomNav:hover{
+.custom_nav:hover{
      background-color: white;
+
+  
 }
-.CustomNav a{
+.custom_nav a{
      color: white !important;
 }
 
-.CustomNav:hover a{
+.custom_nav:hover a{
      color: black !important;
 }
+
+
+
 
 .page-intro--red{
     background-image:url(../img/header_img.jpg);
@@ -119,7 +131,7 @@ body{
 
 
 .page-intro__content{
-
+    
     padding: 100px 15px 45px 30px !important;
 }
 .page-intro_title{
