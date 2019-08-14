@@ -3,94 +3,137 @@
 
 <head>
     <meta charset="UTF-8">
-
+    
 
     <title>LOGIN</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/style.css">
+ 
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700|Lato:300,300i,400" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-
+   <link rel="stylesheet" href="css/bootstrap.css">
+     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+<body style="    background-image: url(img/computer-desk-doctor-48604.jpg);   background-size: cover;
+    background-color: white;
+  padding: 0px;">
+    
+    <div class="container fluid main">
 
-
-<div class="container fluid main">
-
-
-
-
-       <div class="Row">
-       <div data-aos="fade-down" class="WelcomeText">
+       <div class="row">
+       <div data-aos="fade-down" class="welcome_text">
            <h1>WELCOME ONLINE HOSPITAL</h1>
        </div>
 
       </div>
-
-       <div class="Row">
+         <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="Signup " data-aos="fade-right">
-            <h2 style="text-align: center">Sign Up Here</h2>
-              <form action="" class="SignupForm">
-                 <input type="text" placeholder="First Name " name="FirstName">
-                 <input type="text" placeholder="Last Name " name="LastName"><br>
-                 <input type="radio" name="Gender" value="male" checked> Male
-                 <input type="radio" name="Gender" value="female"> Female<br>
-                 <br>
-                 <span>Date of Birth</span>
-                 <input type="date" style="margin-right: 114px;">
-                 <br>
-                 <input type="text" placeholder="Location" name="Location">
-                    <br>
-                 <input type="email" placeholder="Email address" name="EmailAddress">
-
-                 <input type="password" placeholder="Password" name="UserPassword">
-
-                 <br>
-                 <input type="button" name="Submit" value="Submit">
-
-
-
-
+    
+             <h2 style="text-align: center; color: white !important;">Sign Up Here</h2>
+             <div class="signup " data-aos="fade-right">
+              <form action="" class="signup_form">   
             </form>
+             
+<div class="">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>"method="post" class="signup_form">
+        
+        <label for="first_name">First Name</label> <br>
+        <input type="text" name="PatientFirstName" placeholder="First Name " required> 
+        <br>
+        <br>
+        
+        <label for="last_name">Last Name</label> <br>
+        <input type="text" name="PatientLastName" placeholder="Last Name" required>
+        <br>
+        <br>
+        
+        <label for="gender">Gender</label> <br>
+         
+       <select name="PatientGender">
+        <option value="0">Male</option>
+        <option value="1">Female</option>
+        </select>
+        <br>
+        <br>
+        
+        <label for="date_of_birth" >Date of Birth</label> <br>
+        <input type="date" name="PatientDateOfBirth" required>
+        <br>
+        <br>
+        
+        <label for="location">Location</label> <br>
+         <input type="text" name="PatientLocation" placeholder="Location" name="Location"> 
+        <br>
+        <br>
+        
+        <label for="email">Email</label> <br>
+        <input type="email" name="PatientEmail" placeholder="Email address" required> 
+        <br>
+        <br>
+        
+        <label for="password">Password</label> <br>
+         <input type="password" name="UserPassword" placeholder="Password">
+        <br>
+        <br>
+        
+         <label for="password">Password</label> <br>
+         <input type="password" name="ConfirmPassword" placeholder="Password">
+        <br>
+        <br>
+        
+        <input type="submit" name="SubmitData" value="Sign In">
+        
+    </form>
+    </div>
+                 <div class="result">
+                 <?php echo $msg ?>
+                 </div>
         </div>
-
-
         </div>
-
-
-
+        
+        
+        
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="LogIn" data-aos="fade-left">
+          <div class="log_in" data-aos="fade-left">
             <h2>Log In</h2>
-            <form action="" class="LoginForm">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="login_form">
+                
+                <label for="email">Email</label> <br>
                  <input type="email" placeholder="Email address" name="UserId">
                   <br>
                   <br>
+                <label for="password">Password</label> <br>
                  <input type="password" placeholder="Password" name="UserPassword">
                  <br>
                  <br>
-
-                 <input type="button" name="Submit" value="Submit">
+                 
+                 <input type="submit" name="AddData" value="Log In">
+                 
+                <div class="container-contact100-form-btn">
+                    <button name="" class="contact100-form-btn" style="backgroud-color:white !important;">
+                        
+                       <a href="#">  Admin Login</a>  
+                     
+                    </button>
+                </div>
             </form>
         </div>
-
-
+        
+        
 
        </div>
 
 
 
     </div>
-
+    
     </div>
+    
 
-
-
+          
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/aos.js"></script>
-
+ 
 </body>
 
 </html>
