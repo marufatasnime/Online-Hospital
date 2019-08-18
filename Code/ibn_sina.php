@@ -1,3 +1,45 @@
+<?php
+
+include "lib/connection.php";
+$result ="";
+//insert query
+if(isset($_POST['add_data'])){
+   $Name= $_POST['name'];
+   $Department= $_POST['department'];
+   $Email= $_POST['email'];
+   $Hospital_name= $_POST['hospital_name'];
+   $Details= $_POST['details'];
+    
+    
+    $insert_sql= "INSERT INTO doctor(Name,Department,Email,Hospital_name,Details) values ('$Name','$Department','$Email','$Hospital_name','$Details')";
+    
+    if($conn->query($insert_sql)){
+       $result= "Confirmed";
+        
+    }
+    
+    else{
+           die($conn->error);
+    }
+    
+    
+    
+    
+}
+
+$select_sql="SELECT * FROM doctor where Hospital_name='Ibn-Sina'";
+    $select_query=$conn->query($select_sql);
+   
+
+if ($select_query->num_rows>0){ 
+
+
+?>
+
+
+
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -936,24 +978,24 @@ font-weight: bold;">Ibn Sina Hospital</h1>
                 
 <!--                          -->
           
-             
+             <?php while($data=$select_query->fetch_assoc()){ ?>
              <div class="col-md-6 col-lg-3">
                  <div class="card">
                     <div class="card-header card_custom_header2 text-center">
-                     
+                    <span><?php echo $data['Department']; ?></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span> 
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"></h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"><?php echo $data['Name']; ?></h4>
                        
                         <div class="card-text text-center">
-                      
+                      <?php echo $data['Email']; ?>
                         </div>
                          <div class="card-text text-center">
-                  
+                  <?php echo $data['Details']; ?>
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -966,7 +1008,10 @@ font-weight: bold;">Ibn Sina Hospital</h1>
                 </div>
                   
             </div>
-              
+             <?php } ?>
+                    <?php } else{  } ?> 
+                
+           
           
             </div>
          
