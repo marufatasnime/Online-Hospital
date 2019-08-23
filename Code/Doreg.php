@@ -1,4 +1,42 @@
- <!DOCTYPE html>
+ <?php
+
+include "lib/connection.php";
+$result ="";
+//insert query
+if(isset($_POST['add_data'])){
+   $Name= $_POST['name'];
+   $Department= $_POST['department'];
+   $Email= $_POST['email'];
+   $Hospital_name= $_POST['hospital_name'];
+   $Details= $_POST['details'];
+    
+    
+    $insert_sql= "INSERT INTO doctor(Name,Department,Email,Hospital_name,Details) values ('$Name','$Department','$Email','$Hospital_name','$Details')";
+    
+    if($conn->query($insert_sql)){
+       $result= "Confirmed";
+        
+    }
+    
+    else{
+           die($conn->error);
+    }
+    
+    
+    
+    
+}
+
+$select_sql="SELECT * FROM doctor";
+    $select_query=$conn->query($select_sql);
+ echo $select_query -> num_rows;
+
+
+
+
+?>
+  
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -91,7 +129,7 @@
     <div class="container-contact100">
 
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form" action="" method="post">
+            <form class="contact100-form validate-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                
                 <span class="contact100-form-title bedonortitle">
                     Add more doctor
@@ -139,6 +177,9 @@
         
     </div>
     <div class="result">
+        <?php echo $result;
+            
+            ?>
         </div>
 
     <!--    form ends   -->
