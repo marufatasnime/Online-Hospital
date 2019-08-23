@@ -1,10 +1,49 @@
+<?php
+
+include "lib/connection.php";
+$result ="";
+//insert query
+if(isset($_POST['add_data'])){
+   $Name= $_POST['name'];
+   $Department= $_POST['department'];
+   $Email= $_POST['email'];
+   $Hospital_name= $_POST['hospital_name'];
+   $Details= $_POST['details'];
+    
+    
+    $insert_sql= "INSERT INTO doctor(Name,Department,Email,Hospital_name,Details) values ('$Name','$Department','$Email','$Hospital_name','$Details')";
+    
+    if($conn->query($insert_sql)){
+       $result= "Confirmed";
+        
+    }
+    
+    else{
+           die($conn->error);
+    }
+    
+    
+    
+    
+}
+
+$select_sql="SELECT * FROM doctor where Hospital_name='Apollo'";
+    $select_query=$conn->query($select_sql);
+   
+
+if ($select_query->num_rows>0){ 
+
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Popular HOSPITAL</title>
+  <title>United Hospital</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -30,7 +69,7 @@
 
 
             </div>
-           <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
                             <li class="global-nav__item"><a class="global-nav_link" href="#" target="_top">Which hospital you are looking for?? </a></li>
@@ -48,7 +87,7 @@
 
 
         </div>
-           <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -61,11 +100,9 @@
                     <li class="nav-item custom_nav">
                         <a class="nav-link " href="#">Doctor Profile</a>
                     </li>
+                   
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Online Support</a>
-                    </li>
-                    <li class="nav-item custom_nav">
-                       <a class="nav-link " href="#">Surgeon</a>
+                      <a class="nav-link " href="#">Surgeon</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
@@ -93,7 +130,7 @@
             <div class="col-md-10 offset-md-1">
                <div class="hospial_content text-center" style="margin-top: 100px;">
                 <h1 style="font-size: 30pt;
-font-weight: bold;">Popular Hospital</h1>
+font-weight: bold;">United Hospital</h1>
          
                 </div>
             </div>
@@ -102,28 +139,58 @@ font-weight: bold;">Popular Hospital</h1>
         
         <div class="row" style="margin: 40px 0px;">
             
- 
+            
+            
+             <!--                       -->
+            
+            <div class="col-md-6 col-lg-3">
+            
+
+                 <div class="card">
+                     <div class="card-header card_custom_header1 text-center">
+                     <span>Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="Doctor_photo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price1.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title text-center mt-3 ">Dr. Md. Abdul Mabin</h4>
+                       
+                        <div class="card-text text-center">
+                           MBBS, (DMC), DSS (Univ of Vienna), Fellow in Specialized Surgery (Plastic & Reconstructive)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                     <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+
           <!--                       -->  
             
             
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Lab Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. KHAN ABUL KALAM AZAD</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. A. F. S. A. Wasey</h4>
                        
                         <div class="card-text text-center">
-                          MBBS(DMC), FCPS(MED.), MD(INTERNAM MED.), FACP(USA)
-SPECIALTY: MEDICINE
-Visiting Hour : 5 PM - 9 PM, Closed : THURSDAY &nbsp; FRIDAY
-                          </div>
-                           </div>
+                         MBBS, DMM (Malaysia), FCPS (Microbiology) Advanced Training in Immunology
+                          
+                        </div>
+                   <br><br>
+                          
+                    </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
                        <span><a href="#">Book Now</a></span>
@@ -140,20 +207,17 @@ Visiting Hour : 5 PM - 9 PM, Closed : THURSDAY &nbsp; FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Orthopaedic Surgeon</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. QUAZI TARIKUL ISLAM</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Aminul Hassan</h4>
                        
                         <div class="card-text text-center">
-                          MBBS, FCPS(MEDICINE), FACP(USA), FRCP(GLASG, UK), FRCP(EDIN)
-SPECIALTY : MEDICINE
-Visiting Hour : 5 PM - 9 PM, Closed : FRIDAY
-
+                           MBBS, D.Orth, MS (Orth), FACS
 
                         </div>
                     </div>
@@ -173,20 +237,17 @@ Visiting Hour : 5 PM - 9 PM, Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. H A M NAZMUL AHSAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Anisur Rahman</h4>
                        
                         <div class="card-text text-center">
-                          MBBS, FCPS, FRCP(GLASSGOW), FRCP(EDIN), FACP(USA)
-SPECIALTY : MEDICINE
-Visiting Hour: 5 PM - 8 PM, Closed: FRIDAY
-
+						MBBS (DMC), MSc (Canada), FCPS (Surgery), FRCS (Glasgow, UK)
 
                         </div>
                     </div>
@@ -206,20 +267,17 @@ Visiting Hour: 5 PM - 8 PM, Closed: FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Paediatrics Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MD. ABU SIDDIQUE</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Ashraf A. Sheikh</h4>
                        
                         <div class="card-text text-center">
-                         MBBS(DMC), PH.D(CARDIOLOGY), FPGCS(MEDICINE)
-SPECIALTY : CARDIOLOGIST
-Visiting Hour: 5 PM-9 PM, Closed: THURSDAY, FRIDAY & GOVT. HOLIDAY
-
+                          MBBS, DCH (Glasgow), MRCP (London) UK MRCP (Ireland)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -239,21 +297,17 @@ Visiting Hour: 5 PM-9 PM, Closed: THURSDAY, FRIDAY & GOVT. HOLIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Respiratory Medicine & Chest Disease Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. M. ABDULLAH-AL-SAFI MAJUMDER</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Khan Md. Sayeduzzaman</h4>
                        
                         <div class="card-text text-center">
-                        MBBS, D.CARD, MD(CARD), FACC, FSGC, FRCP
-Director & Professor of Cardiology,National Institute of Cardiovascular Diseases,Dhaka
-SPECIALTY: CARDIOLOGIST
-Visiting Hour: 11AM-1PM & 5PM-7PM, Closed: FRIDAY
-
+                         MBBS,MCPS(Medicine), MD(Chest Diseases)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -272,21 +326,19 @@ Visiting Hour: 11AM-1PM & 5PM-7PM, Closed: FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Counselor</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. KHANDAKER QAMRUL ISLAM</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Ms. Razia Sultana</h4>
                        
                         <div class="card-text text-center">
-                         MBBS, D.CARD(DU), MD(CARDIOLOGY), FACC(USA)
-Professor of Cardiologist,,National Institue of Cardiovascular Diseases,Dhaka
-SPECIALTY : CARDIOLOGIST
-Visiting Hour: 7 PM-10 PM, Closed: TUESDAY,THURSDAY & FRIDAY
- 
+                         BSc.(Psychology, DU), MSc (Clinical Psychology, DU), MPH (Public Health, AIUB), 
+PGCert (Mental Health Service and Population Research, London (UK)
+                         
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -305,21 +357,17 @@ Visiting Hour: 7 PM-10 PM, Closed: TUESDAY,THURSDAY & FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. ANISUR RAHMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Ehteshamul Hoque</h4>
                        
                         <div class="card-text text-center">
-                       MBBS, FCPS, TRAINED IN THERAPEUTIC ENDOSCOPY (JAPAN)
-Professor & Senior Consultant(retd),Department of Gastrointestinal Liver and Pancreatic Disorder, BIRDEM(Diabetes) Hospital & Ibrahim Medical College
-SPECIALTY: GASTROENTEROLOGY
-Visiting Hour : 11 AM-1 PM & 6 PM-10 PM, Closed : FRIDAY
- 
+                        MBBS, BCS (Health), M.Phil (Radiotherapy) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -338,20 +386,17 @@ Visiting Hour : 11 AM-1 PM & 6 PM-10 PM, Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiac Surgery Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. M T RAHMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Jahangir Kabir</h4>
                        
                         <div class="card-text text-center">
-                      MBBS, FCPS, TRAINED IN FRANCE & JAPAN
-SPECIALTY: GASTROENTEROLOGY
-Visiting Hour: 11 AM-12:30 PM & 5 PM-9 PM, Closed : FRIDAY
- 
+                       MBBS, MS (CTS)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -370,20 +415,17 @@ Visiting Hour: 11 AM-12:30 PM & 5 PM-9 PM, Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neurology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Neurology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. RUMANA HABIB</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Kanuj Kumar Barman</h4>
                        
                         <div class="card-text text-center">
-                       MBBS, FCPS(MEDICINE)
-SPECIALTY : NEUROLOGY
-Visiting Hour : 5 PM-7 PM, Closed : FRIDAY
- 
+                       MBBS, M.Sc,MPH,MD(Neurology),AMBO Fellow(NCVCRI,Osaka,Japan)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -402,21 +444,17 @@ Visiting Hour : 5 PM-7 PM, Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neurology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Neurosurgery </span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. SYED WAHIDUR RAHMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M Al Amin Salek</h4>
                        
                         <div class="card-text text-center">
-                      MBBS(DHAKA), FCPS(MEDICINE), TRAINED IN NEUROLOGY (AUSTRALIA)
-Professor & Head(Trd.), Neuromedicine Department, Shaheed Suhrawardy Medical College & Hospital, Dhaka
-SPECIALTY : NEUROLOGY
-Visiting Hour : 6 PM-9 PM, Closed : THURSDAY & FRIDAY
- 
+                      MBBS, MCPS (Surgery), FCPS (Surgery), MRCS (Eng), FCPS 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -436,53 +474,47 @@ Visiting Hour : 6 PM-9 PM, Closed : THURSDAY & FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neurology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Chief Nephrologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. M. Mujibul Haque Mollah</h4>
+                       
+                        <div class="card-text text-center">
+                      MBBS, MRCP (UK), Fellow Nephrology (UK)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            
+             <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Dermatology </span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. SAUMITRA SARKER</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Moral Nazrul Islam</h4>
                        
                         <div class="card-text text-center">
-                     MBBS, MS (NEUROSURGERY), FELLOW IN NEUROENDOSCOPY (INDIA), ADVANCED NEUROSURGUCAL TRAINING (JAPAN)
-SPECIALTY : NEURO SURGEON
-Visiting Hour : 6 PM-8 PM, Closed : THURSDAY,FRIDAY & SATURDAY
- 
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                       <span class="float-left leftone"></span>
-                       <span><a href="#">Book Now</a></span>
-                       <span class="float-right rightone"></span>
-                    </div>
-                </div>
-            </div>
-                
-<!--                          -->
-            
-            
-             <!--                       -->  
-            
-            
-                 <div class="col-md-6 col-lg-3">
-                 <div class="card">
-                     <div class="card-header card_custom_header2 text-center">
-                     <span>Diabetology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
-  </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img src="img/price2.png" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MD. FARID UDDIN</h4>
-                       
-                        <div class="card-text text-center">
-                     MBBS, DEM, MD
-SPECIALTY: DIABETOLOGIST AND ENDOCRINOLOGY
-Visiting Hour: 5:30PM-8:30PM, Closed : FRIDAY
- 
+                     MBBS, DD (Singapore), DHRS, FDCS, FICD (USA) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -502,21 +534,17 @@ Visiting Hour: 5:30PM-8:30PM, Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Orthopedic</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Neonatology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MUHAMMAD SHAHIDUZZAMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Nargis Ara Begum</h4>
                        
                         <div class="card-text text-center">
-                    MBBS, MS(ORTHO), RCO(USA)
-                    Professor and Head,Departmnet of Orthopaedic Surgery(Rtd),Dhaka Medical College & Hospital 
-SPECIALTY : ORTHOPAEDICS SPECIALIST
-Visiting Hour: 11AM-1PM, Closed: FRIDAY
-
+                     MBBS, FCPS (Paed), MD (Neonatology), Fellow New Born Medicine (Singapore)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -536,20 +564,17 @@ Visiting Hour: 11AM-1PM, Closed: FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Orthopedic</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Diabetes & Endocrinology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MOINUDDIN AHMED CHOWDHURY</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Nazmul Islam</h4>
                        
                         <div class="card-text text-center">
-                   MBBS, MS(ORTHO), RCO(USA)
-SPECIALTY: ORTHOPAEDICS SPECIALIST
-Visiting Hour : 6 PM-9 PM, Closed: THURSDAY & FRIDAY
-
+						MBBS, Diploma in Internal Medicine (UK), MRCP, US Board Certified in Medicine, Diabetes & Endocrine
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -569,21 +594,17 @@ Visiting Hour : 6 PM-9 PM, Closed: THURSDAY & FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Orthopedic</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. MD. ANOWARUL ISLAM</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Rashid Un Nabi</h4>
                        
                         <div class="card-text text-center">
-                  MBBS(DHAKA), MS(ORTHO), FICS(AMERICA)
-SPECIALTY : ORTHOPAEDICS SPECIALIST
-Visiting Hour : 5:30 PM - 9:00 PM
-Closed : FRIDAY
-
+						MBBS, M.phill (Radiotherapy) IAEA Fellow (Thailand), VARIAN Fellow (India) KFDA Fellow (Korea), UICC 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -602,21 +623,17 @@ Closed : FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>GYNAECOLOGY</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Urology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. SAYEBA AKHTER</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Col. Shameem Waheed</h4>
                        
                         <div class="card-text text-center">
-                 MBBS, FCPS(BD), FCPS(PAK), FICMCH(IN), DRH(UK)
-Ex. Professor of Obstretrics & Gynaecology,Bangabandhu Sheikh Mujib Medical University,Dhaka
-SPECIALTY: OBSTETRICS AND GYNAECOLOGY
-Visiting Hour : 6:30PM-7:30PM, Closed: THURSDAY & FRIDAY
-
+						MBBS, FCPS (Surgery), FCPS (Urology), Fellow SIU
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -636,20 +653,17 @@ Visiting Hour : 6:30PM-7:30PM, Closed: THURSDAY & FRIDAY
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>GYNAECOLOGY</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MRS. FARHAT HOSSAIN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Santanu Chaudhuri</h4>
                        
                         <div class="card-text text-center">
-                 MBBS(DHAKA), FCPS(GYNAE)
-SPECIALTY: OBSTETRICS AND GYNAECOLOGY
-Visiting Hour: 6:30PM-8:30PM, Closed: FRIDAY, SATURDAY & GOVT. HOLIDAYS
-
+						MBBS, DMRT, PGDHM, MD (Tata Memorial Hospital) DNB, M.Phil
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -669,21 +683,17 @@ Visiting Hour: 6:30PM-8:30PM, Closed: FRIDAY, SATURDAY & GOVT. HOLIDAYS
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>GYNAECOLOGY</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Dermatology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. S. F. NARGIS</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Shah Ataur Rahman</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, FCPS, MS
-SPECIALTY : OBSTETRICS AND GYNAECOLOGY
-Visiting Hour : 5 PM-7 PM
-Closed : THURSDAY, FRIDAY & GOVT. HOLIDAYS
-
+						MBBS, Ph.D. (Japan), Postdoctoral fellow (Japan & USA) Trained in Cosmetic Dermatology (India, UAE)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -703,20 +713,17 @@ Closed : THURSDAY, FRIDAY & GOVT. HOLIDAYS
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>ENT (Ear, Nose & Throat)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Consultant, General Surgery</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MAJ (RTD) MD. ASHRAFUL ISLAM</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Zahidul Haq</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, FCPS, FICS(USA)
-SPECIALTY: ENT SPECIALIST
-Visiting Hour: 6 PM-9 PM, Closed : FRIDAY
-
+						MBBS, FCPS (Surgery), FRCS (Glasgow), MS (surgery), Fellow Colorectal Surgery (Singapore)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -733,104 +740,39 @@ Visiting Hour: 6 PM-9 PM, Closed : FRIDAY
              <!--                       -->  
             
             
-                 <div class="col-md-6 col-lg-3">
+          <?php while($data=$select_query->fetch_assoc()){ ?>
+             <div class="col-md-6 col-lg-3">
                  <div class="card">
-                     <div class="card-header card_custom_header2 text-center">
-                     <span>ENT (Ear, Nose & Throat)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                    <div class="card-header card_custom_header2 text-center">
+                     <span><?php echo $data['Department']; ?></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. MOHAMMAD ABDULLAH</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"><?php echo $data['Name']; ?></h4>
                        
                         <div class="card-text text-center">
-                  FCPS, FICS
-SPECIALTY: ENT SPECIALIST
-Visiting Hour: 6PM- 9PM, Closed: FRIDAY
- 
-
+                      <?php echo $data['Email']; ?>
+                        </div>
+                         <div class="card-text text-center">
+                  <?php echo $data['Details']; ?>
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="#">Book Now</a></span>
-                       <span class="float-right rightone"></span>
-                    </div>
-                </div>
-            </div>
-                
-<!--                          -->
-            
-             <!--                       -->  
-            
-            
-                 <div class="col-md-6 col-lg-3">
-                 <div class="card">
-                     <div class="card-header card_custom_header2 text-center">
-                     <span>SKIN AND SEX DISEASE SPECIALIST</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
-  </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img src="img/price2.png" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. M MUJIBUL HOQUE</h4>
                        
-                        <div class="card-text text-center">
-                 FCPS, FRCP, DDV(DU), DDV(AUSTRIA)
-Ex. Head of Department,Skin & VD,Dhaka Medical college & Hospital,Dhaka
-SPECIALTY: SKIN AND SEX DISEASE SPECIALIST
-Visiting Hour: 5PM-9PM, Closed: FRIDAY
-
-
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                       <span class="float-left leftone"></span>
-                      <span><a href="#">Book Now</a></span>
+                       <span><a href="booking.html">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
+                    
                 </div>
+                  
             </div>
-                
-<!--                          -->
-            
-            
-              <!--                       -->  
-            
-            
-                 <div class="col-md-6 col-lg-3">
-                 <div class="card">
-                     <div class="card-header card_custom_header2 text-center">
-                     <span>SKIN AND SEX DISEASE SPECIALIST</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
-  </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img src="img/price2.png" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">PROF. DR. KAZI A. KARIM</h4>
-                       
-                        <div class="card-text text-center">
-                  MBBS(DHK), DDV(VIEN), MSSVD(LOND)
-SPECIALTY : SKIN AND SEX DISEASE SPECIALIST
-Visiting Hour : 5 PM- 9 PM
-Closed : FRIDAY & GOVT. HOLIDAYS
- 
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                       <span class="float-left leftone"></span>
-                      <span><a href="#">Book Now</a></span>
-                       <span class="float-right rightone"></span>
-                    </div>
-                </div>
-            </div>
-                
-<!--                          -->
-
+               <?php } ?>
+                    <?php } else{  } ?> 
+                      
           
             </div>
          
