@@ -1,3 +1,33 @@
+<?php
+
+ include "lib/connection.php";
+ $result ="";
+ if(isset($_POST['add_data'])){
+    $name= $_POST['name'];
+    $age= $_POST['age'];
+    $email= $_POST['email'];
+    $ammount_payment= $_POST['ammount_payment'];
+    $phone= $_POST['phone'];
+    $address= $_POST['address']; 
+     $order_id= $_POST['order_id'];
+    
+
+
+    $insert_sql = "INSERT INTO payment(bname, bage, bemail, bamount, bphone, baddress,order_id) values('$name', $age, '$email', $ammount_payment, $phone, '$address'$order_id)";
+
+    if($conn->query($insert_sql)){
+        $result = "data added";
+}
+
+    else{
+        die($conn->error);
+}
+    }
+
+ 
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
