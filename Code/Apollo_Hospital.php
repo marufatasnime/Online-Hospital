@@ -1,4 +1,5 @@
-<?php
+ 
+ <?php
 
 include "lib/connection.php";
 $result ="";
@@ -37,7 +38,6 @@ if ($select_query->num_rows>0){
 ?>
 
 
-
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -73,7 +73,7 @@ if ($select_query->num_rows>0){
            <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
-                            <li class="global-nav__item"><a class="global-nav_link" href="#" target="_top">Which hospital you are looking for?? </a></li>
+                            <li class="global-nav__item"><a class="global-nav_link" href="Hospital.html" target="_top">Which hospital you are looking for?? </a></li>
              
                         </ul>
                     </nav>
@@ -96,18 +96,18 @@ if ($select_query->num_rows>0){
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="#">Home</a>
+                        <a class="nav-link " href="home.php">Home</a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Profile</a>
+                        <a class="nav-link " href="Hospital.html">Doctor Profile</a>
                     </li>
                    
                      <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Surgeon</a>
+                        <a class="nav-link " href="Surgeon.html">Surgeon</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">About  <span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="about.html">About  <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +172,7 @@ Phone: +880-2-8401661, 8845242, 01729-276556 Cell: +880 1841276556, Hotline: 106
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="#">Book Now</a></span>
+                       <span><a href="booking.php">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -207,7 +207,7 @@ Phone: +880-2-8401661, 8845242,  01729-276556 Cell: +880 1841276556, Hotline: 10
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                     <span><a href="#">Book Now</a></span>
+                     <span><a href="booking.php">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -242,7 +242,7 @@ Phone: +880-2-8401661, Hotline – 10678, 01729-276556
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="#">Book Now</a></span>
+                       <span><a href="booking.php">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -275,7 +275,7 @@ Phone: +880-2-8401661, 8845242, Cell: +880 1841276556, Hotline: 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="#">Book Now</a></span>
+                       <span><a href="booking.php">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -310,7 +310,7 @@ Phone: +880-2-8401661, 8845242, Cell: +880 1841276556, Hotline: 10678,  01729-27
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="#">Book Now</a></span>       
+                        <span><a href="booking.html">Book Now</a></span>       
                          <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -345,7 +345,7 @@ Phone: +880-2-8401661, Hotline – 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -379,7 +379,7 @@ Phone: +880-2-8401661, Hotline – 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@ Phone: +880-2-8401661, 8845242, Cell: +880 1841276556, Hotline: 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -445,7 +445,7 @@ Phone: +880-2-8401661, 8845242, Cell: +880 1841276556, Hotline: 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -478,7 +478,7 @@ Phone: +880-2-8401661, 8845242, Cell: +880 1841276556, Hotline: 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -512,7 +512,7 @@ Phone: +880-2-8401661, Hotline – 10678
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-<span><a href="#">Book Now</a></span>                       <span class="float-right rightone"></span>
+<span><a href="booking.html">Book Now</a></span>                       <span class="float-right rightone"></span>
                     </div>
                 </div>
             </div>
@@ -520,40 +520,7 @@ Phone: +880-2-8401661, Hotline – 10678
                 
 <!--                          -->
 
- 
-             <div class="col-md-6 col-lg-3">
-                 <div class="card">
-                    <div class="card-header card_custom_header2 text-center">
-                     <span></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
-  </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img src="img/price2.png" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"></h4>
-                       
-                        <div class="card-text text-center">
-                      
-                        </div>
-                         <div class="card-text text-center">
-             
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                       <span class="float-left leftone"></span>
-                       
-                       <span><a href="#">Book Now</a></span>
-                       <span class="float-right rightone"></span>
-                    </div>
-                    
-                </div>
-                  
-            </div>
-            </div>
-         
-             </div></div>
-        <?php while($data=$select_query->fetch_assoc()){ ?>
+ <?php while($data=$select_query->fetch_assoc()){ ?>
              <div class="col-md-6 col-lg-3">
                  <div class="card">
                     <div class="card-header card_custom_header2 text-center">
@@ -586,6 +553,10 @@ Phone: +880-2-8401661, Hotline – 10678
                <?php } ?>
                     <?php } else{  } ?> 
                 
+          
+            </div>
+         
+             </div></div>
         </div>
     </div>
   
