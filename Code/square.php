@@ -1,10 +1,53 @@
+ 
+ <?php
+
+include "lib/connection.php";
+$result ="";
+//insert query
+if(isset($_POST['add_data'])){
+   $Name= $_POST['name'];
+   $Department= $_POST['department'];
+   $Email= $_POST['email'];
+   $Hospital_name= $_POST['hospital_name'];
+   $Details= $_POST['details'];
+    
+    
+    $insert_sql= "INSERT INTO doctor(Name,Department,Email,Hospital_name,Details) values ('$Name','$Department','$Email','$Hospital_name','$Details')";
+    
+    if($conn->query($insert_sql)){
+       $result= "Confirmed";
+        
+    }
+    
+    else{
+           die($conn->error);
+    }
+    
+    
+    
+    
+}
+
+$select_sql="SELECT * FROM doctor where Hospital_name='Square'";
+    $select_query=$conn->query($select_sql);
+   
+
+if ($select_query->num_rows>0){ 
+
+
+?>
+
+
+
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>LabAid HOSPITAL</title>
+  <title>Square Hospital</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -30,16 +73,16 @@
 
 
             </div>
-         <div class="col-xs-3 col-sm-3 col-md-3">
+               <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
-                            <li class="global-nav__item"><a class="global-nav_link" href="#" target="_top">Which hospital you are looking for?? </a></li>
+                            <li class="global-nav__item"><a class="global-nav_link" href="Hospital.html" target="_top">Which hospital you are looking for?? </a></li>
              
                         </ul>
                     </nav>
 
 
-            </div>
+            </div>s
                  <div class="col-xs-3 col-sm-3 col-md-3">
               
 
@@ -48,7 +91,7 @@
 
 
         </div>
-             <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -56,20 +99,20 @@
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="home.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Profile</a>
+                        <a class="nav-link " href="Hospital.html">Doctor Profile</a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Online Support</a>
+                        <a class="nav-link " href="support.html">Online Support</a>
                     </li>
                     <li class="nav-item custom_nav">
-                      <a class="nav-link " href="#">Surgeon</a>
+                     <a class="nav-link " href="Surgeon.html">Surgeon</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">About</a>
+                        <a class="nav-link " href="about.html">About</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +136,7 @@
             <div class="col-md-10 offset-md-1">
                <div class="hospial_content text-center" style="margin-top: 100px;">
                 <h1 style="font-size: 30pt;
-font-weight: bold;">LabAid Hospital</h1>
+font-weight: bold;">Square Hospital</h1>
          
                 </div>
             </div>
@@ -111,17 +154,17 @@ font-weight: bold;">LabAid Hospital</h1>
 
                  <div class="card">
                      <div class="card-header card_custom_header1 text-center">
-                     <span>Emergency</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="Doctor_photo"> </span>
+                     <span>Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="Doctor_photo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price1.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title text-center mt-3 ">Dr Anharur Rahman</h4>
+                        <h4 class="card-title text-center mt-3 ">Dr. Md. Abdul Mabin</h4>
                        
                         <div class="card-text text-center">
-                           MBBS(D.U) Asst. Registrar
+                           MBBS, (DMC), DSS (Univ of Vienna), Fellow in Specialized Surgery (Plastic & Reconstructive)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -138,17 +181,17 @@ font-weight: bold;">LabAid Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Internal Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Asmat Ahmed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">  Dr. A.B.M Sarwar-E-Alam</h4>
                        
                         <div class="card-text text-center">
-                           MBBS, MD (USA)
+                         MBBS, FCPS
                           
                         </div>
                    <br><br>
@@ -170,18 +213,17 @@ font-weight: bold;">LabAid Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Neuromedicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Zubayer Ahmed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Abdul Kader Shaikh</h4>
                        
                         <div class="card-text text-center">
-                           MBBS, MD (Internal Medicine)
-Clinical Fellow-Rheumatology &nbsp; Immunology.
+                           FCPS, MD
 
                         </div>
                     </div>
@@ -201,17 +243,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. A.K.M. Shaheen Ahmed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Abdullah Al Jamil</h4>
                        
                         <div class="card-text text-center">
-                          FCPS(Medicine),MCPS(Medicine),MBBS Associate Prof.
+						 MBBS, FCPS, MD, FCAPSC, Trained in EPS & RFA (AIIMS, India)
 
                         </div>
                     </div>
@@ -231,17 +273,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Internal Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof S M MUSTAFA ZAMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Abu Reza Mohammad Nooruzzaman</h4>
                        
                         <div class="card-text text-center">
-                          MBBS, DTCD, MD (Card), Fellow-interventional cardiology (India, Singapore, Bangladesh)
+                          
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -261,17 +303,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Pediatric Surgeon</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR ABU SALIM</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Ahmed Zahid Hossain</h4>
                        
                         <div class="card-text text-center">
-                         MBBS, D, CARD, MD(CARDIOLOGY), FESC
+                         MBBS, MS ( Ped. Surgery )
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -290,18 +332,18 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gynecology & Obstetrics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Lutfor Rahman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Professor Dr. Anaware Begum</h4>
                        
                         <div class="card-text text-center">
-                         MBBS, MS (CTS)
-                         SPECIALITY: Cardiac Surgery 
+                         MBBS, FCPS ( Gyne & Obs )
+                         
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -320,17 +362,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Child Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Urology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Abdul Quayum</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. ATM Samdani</h4>
                        
                         <div class="card-text text-center">
-                        MBBS, BCS(HEALTH) DCH (DU) Holy family red crescent Medical college and Hospital 
+                        MBBS, MD ( Radiology and Imaging from BIRDEM ) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -349,17 +391,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Child Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Eye ( Ophthalmology )</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Azmeri Sultana</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Hiramoni Sarma</h4>
                        
                         <div class="card-text text-center">
-                       MBBS, DCH ,MCPS,FCPS Associate Professor Child Hospital , Mirpur -2, Dhaka 
+                       MBBS, DOMS, Fellow Retinal lasers
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -378,17 +420,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Internal Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr (Prof. ) Maj Gen Muhammad Rabiul Hossain</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Jahangir Alam</h4>
                        
                         <div class="card-text text-center">
-                       MBBS,MCPS,FCPS,FRCP(Edin) 
+                        MBBS, (DMC), MRCP (UK)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -407,17 +449,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gynecology & Obstetrics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. A.K.M Shamsul Kabir</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Kashefa Nazneen</h4>
                        
                         <div class="card-text text-center">
-                       MBBS (DMC), FCPS (Medicine), MD (Hepatology) 
+                      MBBS, FCPS ( Gyne & Obs ) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -437,17 +479,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Consultant, Specialist of Endocrinologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. ABM Shafiullah</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Kazi Ali Hassan</h4>
                        
                         <div class="card-text text-center">
-                      MBBS,MD(GASTRO) 
+                      MBBS, M.Phil (EM), MRCP (UK) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -467,17 +509,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Nephrology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Cardiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. (Dr.) Asia Khanam</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Khaled Mohsin</h4>
                        
                         <div class="card-text text-center">
-                      MBBS, MD(Nephrology) 
+                      MBBS (Gold Medalist from DMC), MRCP (Ireland), MD ( Cardiology – NICVD / DU), MSc ( Diagnostic & Interventional )
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -497,17 +539,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Nephrology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gynecology & Obstetrics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Md Anwarul Hoque Faraji</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Khaleda Yeasmin Mirza</h4>
                        
                         <div class="card-text text-center">
-                     MBBS, BCS, MD (Nephrology)
+                     MBBS, DGO ( Obs & Gyne – Ireland )
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -527,17 +569,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Diabetology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Neurosurgeon</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Asso. Prof. Dr. Indrajit Prashad</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Khandaker Abu Talha</h4>
                        
                         <div class="card-text text-center">
-                    MBBS, FCPS(Med), MD(Endocrinology), MACE(USA)
+						MBBS, MCPS, MS
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -557,17 +599,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Diabetology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Urology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. A.K.M. Shaheen Ahmed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Professor Dr. Ko Ninan Chac</h4>
                        
                         <div class="card-text text-center">
-                   FCPS (Medicine), MCPS (Medicine), MBBS Associate Prof., Medicine BIRDEM & Ibrahim Medical College
+						MBBS, MS, MCh(Urology), FRCS (Urology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -586,17 +628,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Diabetology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Kidney ( Nephrology )</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. ANISUR RAHMAN</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M A Wahab Khan</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, DIH, DEM, MACE
+						MBBS, MD (Nephrology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -616,17 +658,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Thyroid and Hormone Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Physical Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Hafizur Rahman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M. A. Rashid</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, DEM, MD (EM), MACE (USA)
+						MBBS, FCPS ( Physical Medicine )
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -646,17 +688,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>ENT (Ear, Nose &nbsp; Throat)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Urology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. K. M. Mamun Murshed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. M. A. Zulkifl</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, PGDND, DLO
+						 MBBS, FCPS, FRCS (England)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -676,17 +718,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>ENT (Ear, Nose & Throat)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. KA Faisal</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M. Motahar Hossain</h4>
                        
                         <div class="card-text text-center">
-                  MBBS,DLO
+						 FCPS ( medicine), MD ( Hepatology )
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -706,18 +748,17 @@ Clinical Fellow-Rheumatology &nbsp; Immunology.
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>ENT (Ear, Nose & Throat)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>ENT – Head & Neck Surgeon</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M Muinul Hafiz</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M.H. Shaheel Mohmood</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, DAND, DLO, MS (ENT), FACS(USA), FICS
-Specialty: Head & Neck Surgeon 
+						MBBS, FCPS, MS
 
                         </div>
                     </div>
@@ -737,17 +778,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Burn Plastic & Cosmetic Surgery</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gastroenterology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Foara Tasnim Palmy</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Mahmud Hasan</h4>
                        
                         <div class="card-text text-center">
-                  Plastic, Reconstructive & Cosmetic Surgeon MBBS (DMC), MS (Plastic Surgery) 
+						FCPS ( Medicine ) , PhD, FRCP, MBBS
 
                         </div>
                     </div>
@@ -768,17 +809,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Skin & VD</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">DR. MD. ABUL KASHEM CHOWDHURY</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Afzalur Rahman</h4>
                        
                         <div class="card-text text-center">
-                  MBBS, DDV (DU), FCPS (SKIN & VD) 
+						MBBS, MD (Card), PhD (Card), FACC (USA), FRCP (Glasgow), FRCP (Edin)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -797,17 +838,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Skin & VD</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Anesthesiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Ismail Hossain</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Md. Ahsanul Habib</h4>
                        
                         <div class="card-text text-center">
-                 MBBS, FCGP, DDV 
+						 MBBS, FCPS
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -826,17 +867,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Nutrition & Dietetics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Pathology & Laboratory</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Dilara Makhbul</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"> Dr. Md. Amer Wahed</h4>
                        
                         <div class="card-text text-center">
-                MBBS 
+						MBBS (IPGMR), MD (USA), FACP (USA) Diplomate in Internal Medicine (UK)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -856,17 +897,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Nutrition & Dietetics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Pathology & Laboratory</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Kamrunnaher</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Aminul Islam Khan</h4>
                        
                         <div class="card-text text-center">
-                MBBS 
+						MBBS (DMC), Board Certified in Pathology (AP & CP)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -885,17 +926,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Nutrition & Dietetics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Anesthesiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Salma Pervin</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Azharul Islam</h4>
                        
                         <div class="card-text text-center">
-                MBBS 
+						MBBS, FCPS
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -915,17 +956,17 @@ Specialty: Head & Neck Surgeon
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Family Physician</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Neuromedicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr Shahidur Rahman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Ismail Chowdhury</h4>
                        
                         <div class="card-text text-center">
-                MBBS, FCPS 
+						MBBS, FCPS (Medicine), MD (Neurology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -937,9 +978,44 @@ Specialty: Head & Neck Surgeon
             </div>
                 
 <!--                          -->
-                          
           
-        
+            <?php while($data=$select_query->fetch_assoc()){ ?>
+             <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                    <div class="card-header card_custom_header2 text-center">
+                     <span><?php echo $data['Department']; ?></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"><?php echo $data['Name']; ?></h4>
+                       
+                        <div class="card-text text-center">
+                      <?php echo $data['Email']; ?>
+                        </div>
+                         <div class="card-text text-center">
+                  <?php echo $data['Details']; ?>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       
+                       <span><a href="booking.html">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                    
+                </div>
+                  
+            </div>
+               <?php } ?>
+                    <?php } else{  } ?> 
+                
+          
+            </div>
+         
+            
         </div>
     </div>
   
