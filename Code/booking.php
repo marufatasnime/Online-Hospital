@@ -1,4 +1,34 @@
- <!DOCTYPE html>
+?php
+
+ include "lib/connection.php";
+ $result ="";
+ if(isset($_POST['add_data'])){
+    $name= $_POST['name'];
+    $age= $_POST['age'];
+    $email= $_POST['email'];
+    $ammount_payment= $_POST['ammount_payment'];
+    $phone= $_POST['phone'];
+    $address= $_POST['address']; 
+     $order_id= $_POST['order_id'];
+    
+
+
+    $insert_sql = "INSERT INTO payment(bname, bage, bemail, bamount, bphone, baddress,order_id) values('$name', $age, '$email', $ammount_payment, $phone, '$address'$order_id)";
+
+    if($conn->query($insert_sql)){
+        $result = "data added";
+}
+
+    else{
+        die($conn->error);
+}
+    }
+
+ 
+
+?>
+ 
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -91,7 +121,7 @@
     <div class="container-contact100">
 
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>"method="post">
                 <span class="contact100-form-title bedonortitle">
                     Get Booking of doctors easily
                 </span>
@@ -150,9 +180,39 @@
     <!--    form ends   -->
 
 
-    <!-- Optional JavaScript -->
+   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
+<script>
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '0.01'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name);
+            $.post("booking.php", {order_id : data.orderID})
+            /*
+              // Call your server to save the transaction
+            return fetch('/paypal-transaction-complete', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            });
+            */
+          });
+        }
+      }).render('#paypal-button-container');
+    </script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
