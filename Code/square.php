@@ -1,4 +1,5 @@
-<?php
+ 
+ <?php
 
 include "lib/connection.php";
 $result ="";
@@ -37,6 +38,9 @@ if ($select_query->num_rows>0){
 ?>
 
 
+
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -72,7 +76,7 @@ if ($select_query->num_rows>0){
                <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
-                            <li class="global-nav__item"><a class="global-nav_link" href="#" target="_top">Which hospital you are looking for?? </a></li>
+                            <li class="global-nav__item"><a class="global-nav_link" href="Hospital.html" target="_top">Which hospital you are looking for?? </a></li>
              
                         </ul>
                     </nav>
@@ -95,20 +99,20 @@ if ($select_query->num_rows>0){
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="home.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Profile</a>
+                        <a class="nav-link " href="Hospital.html">Doctor Profile</a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Online Support</a>
+                        <a class="nav-link " href="support.html">Online Support</a>
                     </li>
                     <li class="nav-item custom_nav">
-                     <a class="nav-link " href="#">Surgeon</a>
+                     <a class="nav-link " href="Surgeon.html">Surgeon</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">About</a>
+                        <a class="nav-link " href="about.html">About</a>
                     </li>
                 </ul>
             </div>
@@ -975,38 +979,7 @@ font-weight: bold;">Square Hospital</h1>
                 
 <!--                          -->
           
-            
-             <div class="col-md-6 col-lg-3">
-                 <div class="card">
-                    <div class="card-header card_custom_header2 text-center">
-                     <span></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
-  </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img src="img/price2.png" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"></h4>
-                       
-                        <div class="card-text text-center">
-                      
-                        </div>
-                         <div class="card-text text-center">
-                
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                       <span class="float-left leftone"></span>
-                       
-                       <span><a href="#">Book Now</a></span>
-                       <span class="float-right rightone"></span>
-                    </div>
-                    
-                </div>
-                  
-            </div>
-            
-                <?php while($data=$select_query->fetch_assoc()){ ?>
+            <?php while($data=$select_query->fetch_assoc()){ ?>
              <div class="col-md-6 col-lg-3">
                  <div class="card">
                     <div class="card-header card_custom_header2 text-center">
@@ -1039,6 +1012,7 @@ font-weight: bold;">Square Hospital</h1>
                <?php } ?>
                     <?php } else{  } ?> 
                 
+          
             </div>
          
             
