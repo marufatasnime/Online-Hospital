@@ -34,7 +34,7 @@
             <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
-                            <li class="global-nav__item"><a class="global-nav_link" href="#" target="_top">Which hospital you are looking for?? </a></li>
+                            <li class="global-nav__item"><a class="global-nav_link" href="Hospital.html" target="_top">Which hospital you are looking for?? </a></li>
              
                         </ul>
                     </nav>
@@ -57,18 +57,18 @@
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="home.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Profile</a>
-                    </li>
-
-                    <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Surgeon</a>
+                        <a class="nav-link " href="Hospital.html">Doctor Profile</a>
                     </li>
 
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">About</a>
+                        <a class="nav-link " href="Surgeon.html">Surgeon</a>
+                    </li>
+
+                    <li class="nav-item custom_nav">
+                        <a class="nav-link " href="about.html">About</a>
                     </li>
                 </ul>
             </div>
@@ -92,7 +92,7 @@
                             <p>To get instant Doctor Serial click the button</p>
                         </div>
 
-                        <a class="page-intro__btn btn" href="#" target="_top">Book Now</a>
+                        <a class="page-intro__btn btn" href="booking.php" target="_top">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                                 <div class="join_team text-center">
                                     <h3>Which Department You want?</h3>
                                     <div class="text">
-                                        <form action="" class="signup_form" method="post">
+                                        <form action="seedoctorSearch.php" class="signup_form" method="post">
                                             <input class="custom_input" name="department" type="text" />
 
                                             <input name="submit-location" style="margin:20px 0px;" class="btn custom_btn" type="submit" value="Search">
@@ -154,7 +154,7 @@
                                 <div class="join_team text-center">
                                     <h3>Which Department You want?</h3>
                                     <div class="text">
-                                        <form action="" class="signup_form" method="post">
+                                        <form action="seedoctorSearch.php" class="signup_form" method="post">
                                             <input class="custom_input" name="name" type="text" />
 
                                             <input name="submit-search" style="margin:20px 0px;" class="btn custom_btn" type="submit" value="Search">
