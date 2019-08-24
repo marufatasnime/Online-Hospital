@@ -1,4 +1,34 @@
- <!DOCTYPE html>
+<?php
+
+ include "lib/connection.php";
+ $result ="";
+ if(isset($_POST['add_data'])){
+    $name= $_POST['name'];
+    $age= $_POST['age'];
+    $email= $_POST['email'];
+    $ammount_payment= $_POST['ammount_payment'];
+    $phone= $_POST['phone'];
+    $address= $_POST['address']; 
+     $order_id= $_POST['order_id'];
+    
+
+
+    $insert_sql = "INSERT INTO payment(bname, bage, bemail, bamount, bphone, baddress,order_id) values('$name', $age, '$email', $ammount_payment, $phone, '$address'$order_id)";
+
+    if($conn->query($insert_sql)){
+        $result = "data added";
+}
+
+    else{
+        die($conn->error);
+}
+    }
+
+ 
+
+?>
+
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -20,6 +50,7 @@
 </head>
 
 <body>
+<script src="https://www.paypal.com/sdk/js?client-id=AaKBw-_N29XRLjkOwP4f-RiN_pvneXt3jEcIwBLQtk1zJpPz-0Ve3cdHfrPUBAXe10l6ZW9fq3laPT-l"></script>
  <!--        1st nav ends   --> 
       
         <div class="container-fluid custom_top">
@@ -67,7 +98,7 @@
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="home.html">Home</a>
+                        <a class="nav-link " href="home.php">Home</a>
                     </li>
                     <li class="nav-item custom_nav">
                         <a class="nav-link " href="Hospital.html">Doctor Profile</a>
@@ -91,7 +122,8 @@
     <div class="container-contact100">
 
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
+            
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>"method="post">
                 <span class="contact100-form-title bedonortitle">
                     Get Booking of doctors easily
                 </span>
@@ -102,7 +134,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your Blood Group">
-                    <input class="input100" type="text" name="name" placeholder="Age">
+                    <input class="input100" type="text" name="age" placeholder="Age">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -116,10 +148,7 @@
 					<span class="focus-input100"></span>
 				</div>
                
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
-					<input class="input100" type="password" name="account_no" id="password2" placeholder="Account No" onKeyUp="checkPass(); return false;">
-					<span class="focus-input100"></span>
-				</div>
+               
                 <div>
                     <span id="confirmMessage" class="confirmMessage"></span>
                 </div>
@@ -130,13 +159,17 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your Address">
-                    <textarea class="input100" name="message" placeholder="Address"></textarea>
+                    <textarea class="input100" name="address" placeholder="Address"></textarea>
                     <span class="focus-input100"></span>
+                </div>
+                  <div  id="paypal-button-container">
+                    
                 </div>
 
 
                 <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
+                    <button type="submit"  name="add_data" class="contact100-form-btn">
+                        
                         <span>
                             <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
         Book Now
@@ -146,16 +179,51 @@
             </form>
         </div>
     </div>
+    
+                 <div class="result">
+                 <?php echo $result?>
+                 </div>
 
     <!--    form ends   -->
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
+<script>
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '0.01'
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name);
+            $.post("booking.php", {order_id : data.orderID})
+            /*
+              // Call your server to save the transaction
+            return fetch('/paypal-transaction-complete', {
+              method: 'post',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            });
+            */
+          });
+        }
+      }).render('#paypal-button-container');
+    </script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
+
