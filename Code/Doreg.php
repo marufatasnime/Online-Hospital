@@ -1,3 +1,4 @@
+ 
  <?php
 
 include "lib/connection.php";
@@ -35,8 +36,13 @@ $select_sql="SELECT * FROM doctor";
 
 
 ?>
-  
-<!DOCTYPE html>
+ 
+ 
+ 
+ 
+ 
+ 
+ <!DOCTYPE html>
 
 <html lang="en">
 
@@ -105,18 +111,18 @@ $select_sql="SELECT * FROM doctor";
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="#">Home</a>
+                        <a class="nav-link " href="adminhome.php">Home</a>
                     </li>
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Profile</a>
+                        <a class="nav-link " href="Hospitaladmin.html">Doctor Profile</a>
                     </li>
                    
                      <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">Doctor Registration</a>
+                        <a class="nav-link " href="Surgeon.html">Doctor Registration</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
-                        <a class="nav-link " href="#">About</a>
+                        <a class="nav-link " href="about.html">About</a>
                     </li>
                 </ul>
             </div>
@@ -136,35 +142,35 @@ $select_sql="SELECT * FROM doctor";
                 </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your name">
-                    <input class="input100" type="text" name="Name" placeholder="Doctor's Full Name" required>
+                    <input class="input100" type="text" name="name" placeholder="Doctor's Full Name" required>
                     <span class="focus-input100"></span>
                 </div>
               
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter department ">
-                    <input class="input100" type="text" name="Department" placeholder="Department" required>
+                    <input class="input100" type="text" name="department" placeholder="Department" required>
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your email: e@a.x">
-                    <input class="input100" type="email" name="Email" placeholder="Email" required>
+                    <input class="input100" type="email" name="email" placeholder="Email" required>
                     <span class="focus-input100"></span>
                 </div>
                   <div class="wrap-input100 validate-input" data-validate="Hospital name">
-                 <input class="input100" type="text" name="HospitalName" placeholder="Hospital's Name" required>
+                 <input class="input100" type="text" name="hospital_name" placeholder="Hospital's Name" required>
                     <span class="focus-input100"></span>
                 </div>
               
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your Address">
-                    <textarea class="input100" name="Details" placeholder="Details" required></textarea>
+                    <textarea class="input100" name="details" placeholder="Details" required></textarea>
                     <span class="focus-input100"></span>
                 </div>
                   
 
 
                 <div class="container-contact100-form-btn">
-                    <button type="submit"  name="AddData" class="contact100-form-btn">
+                    <button type="submit"  name="add_data" class="contact100-form-btn">
                         <span>
                             <i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
      Confirm registeration
@@ -177,7 +183,7 @@ $select_sql="SELECT * FROM doctor";
         
     </div>
     <div class="result">
-        <?php echo $result;
+            <?php echo $result;
             
             ?>
         </div>
