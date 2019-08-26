@@ -1,10 +1,50 @@
+ 
+ <?php
+
+include "lib/connection.php";
+$result ="";
+//insert query
+if(isset($_POST['add_data'])){
+   $Name= $_POST['name'];
+   $Department= $_POST['department'];
+   $Email= $_POST['email'];
+   $Hospital_name= $_POST['hospital_name'];
+   $Details= $_POST['details'];
+    
+    
+    $insert_sql= "INSERT INTO doctor(Name,Department,Email,Hospital_name,Details) values ('$Name','$Department','$Email','$Hospital_name','$Details')";
+    
+    if($conn->query($insert_sql)){
+       $result= "Confirmed";
+        
+    }
+    
+    else{
+           die($conn->error);
+    }
+    
+    
+    
+    
+}
+
+$select_sql="SELECT * FROM doctor where Hospital_name='apollo'";
+    $select_query=$conn->query($select_sql);
+   
+
+if ($select_query->num_rows>0){ 
+
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>United Hospital</title>
+  <title>Apollo HOSPITAL</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +61,7 @@
 
  <!--        1st nav ends   --> 
       
-        <div class="container-fluid custom_top">
+          <div class="container-fluid custom_top">
         <div class="row cover_img">
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="pro_icon">
@@ -30,7 +70,7 @@
 
 
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
+             <div class="col-xs-3 col-sm-3 col-md-3">
                   <nav class="global-header__nav global-nav visually-hidden js-global-nav" role="navigation">
                         <ul class="global-nav_list">
                             <li class="global-nav__item"><a class="global-nav_link" href="Hospital.html" target="_top">Which hospital you are looking for?? </a></li>
@@ -48,7 +88,7 @@
 
 
         </div>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light custom_menu">
           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -56,14 +96,16 @@
             <div class="collapse navbar-collapse custom_navbar" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item custom_nav active">
-                        <a class="nav-link " href="home.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link " href="home.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item custom_nav">
                         <a class="nav-link " href="Hospital.html">Doctor Profile</a>
                     </li>
-                   
                     <li class="nav-item custom_nav">
-                      <a class="nav-link " href="Surgeon.html">Surgeon</a>
+                        <a class="nav-link " href="support.html">Online Support</a>
+                    </li>
+                    <li class="nav-item custom_nav">
+                        <a class="nav-link " href="Surgeon.html">Surgeon</a>
                     </li>
                    
                     <li class="nav-item custom_nav">
@@ -91,7 +133,7 @@
             <div class="col-md-10 offset-md-1">
                <div class="hospial_content text-center" style="margin-top: 100px;">
                 <h1 style="font-size: 30pt;
-font-weight: bold;">United Hospital</h1>
+font-weight: bold;">Ibn Sina Hospital</h1>
          
                 </div>
             </div>
@@ -109,22 +151,22 @@ font-weight: bold;">United Hospital</h1>
 
                  <div class="card">
                      <div class="card-header card_custom_header1 text-center">
-                     <span>Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="Doctor_photo"> </span>
+                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="Doctor_photo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price1.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title text-center mt-3 ">Dr. Md. Abdul Mabin</h4>
+                        <h4 class="card-title text-center mt-3 ">Professor Dr. Md. Lutful Kabir</h4>
                        
                         <div class="card-text text-center">
-                           MBBS, (DMC), DSS (Univ of Vienna), Fellow in Specialized Surgery (Plastic & Reconstructive)
+                           MRCP (UK), FRCP (London).
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                     <span><a href="booking.php">Book Now</a></span>
+                     <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -136,25 +178,24 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Lab Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. A. F. S. A. Wasey</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Mohammad Zohir Uddin</h4>
                        
                         <div class="card-text text-center">
-                         MBBS, DMM (Malaysia), FCPS (Microbiology) Advanced Training in Immunology
+                         MBBS, FCPS (Medicine), MD (Internal Medicine), FACP (America), FRCP (UK)
                           
                         </div>
-                   <br><br>
                           
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -168,23 +209,23 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Orthopaedic Surgeon</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Aminul Hassan</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">.Professor Dr. Shohael Mahmud Arafat</h4>
                        
                         <div class="card-text text-center">
-                           MBBS, D.Orth, MS (Orth), FACS
+                          FCPS (Medicine), MRCP (UK)
 
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -198,23 +239,23 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Medicine Specialist & Consultant</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Anisur Rahman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr.A.R Khan</h4>
                        
                         <div class="card-text text-center">
-						MBBS (DMC), MSc (Canada), FCPS (Surgery), FRCS (Glasgow, UK)
+						MD, DABFP, FAAFP (USA)
 
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -228,22 +269,22 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Paediatrics Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Medicine and Nephrology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Ashraf A. Sheikh</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Md. Ayub Ali Chowdhury</h4>
                        
                         <div class="card-text text-center">
-                          MBBS, DCH (Glasgow), MRCP (London) UK MRCP (Ireland)
+                           MBBS, FCPS (Medicine), MD (Nephrology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="booking.php">Book Now</a></span>
+                        <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -258,22 +299,22 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Respiratory Medicine & Chest Disease Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Khan Md. Sayeduzzaman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr.Ahmed Manadir Hossain</h4>
                        
                         <div class="card-text text-center">
-                         MBBS,MCPS(Medicine), MD(Chest Diseases)
+                         MBBS, FCPS (Medicine), D-Card
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                      <span><a href="booking.php">Book Now</a></span>
+                      <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -287,24 +328,23 @@ font-weight: bold;">United Hospital</h1>
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Counselor</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Internal Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Ms. Razia Sultana</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Sakina Anwar</h4>
                        
                         <div class="card-text text-center">
-                         BSc.(Psychology, DU), MSc (Clinical Psychology, DU), MPH (Public Health, AIUB), 
-PGCert (Mental Health Service and Population Research, London (UK)
+                        MBBS, MD
                          
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="booking.php">Book Now</a></span>
+                        <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -318,22 +358,23 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gynecology & Obstetrics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Ehteshamul Hoque</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Masuda Begum Ranu</h4>
                        
                         <div class="card-text text-center">
-                        MBBS, BCS (Health), M.Phil (Radiotherapy) 
+						FCPS (Gynae & Obs), D-Med (UK)
+                       
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="booking.php">Book Now</a></span>
+                        <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -347,22 +388,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Cardiac Surgery Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Gynecology & Obstetrics</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Jahangir Kabir</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Badrunnesa Begum</h4>
                        
                         <div class="card-text text-center">
-                       MBBS, MS (CTS)
+                       FCPS, DGO, MCPS (Gynae & Obs)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -376,22 +417,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neurology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Kanuj Kumar Barman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. M. Touhidul Haque</h4>
                        
                         <div class="card-text text-center">
-                       MBBS, M.Sc,MPH,MD(Neurology),AMBO Fellow(NCVCRI,Osaka,Japan)
+                       MBBS, MD (Cardiology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -405,22 +446,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neurosurgery </span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M Al Amin Salek</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Col. (Rtd.) Prof.Dr.Zehad Khan</h4>
                        
                         <div class="card-text text-center">
-                      MBBS, MCPS (Surgery), FCPS (Surgery), MRCS (Eng), FCPS 
+                        MCPS, FCPS, FRCP (Glasgow), FACC (USA) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -435,22 +476,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Chief Nephrologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. M. Mujibul Haque Mollah</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md.Monsurul Haque</h4>
                        
                         <div class="card-text text-center">
-                      MBBS, MRCP (UK), Fellow Nephrology (UK)
+                     MD (Cardiology), USMLE (USA) 
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -465,22 +506,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Dermatology </span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Moral Nazrul Islam</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Sufia Jannat</h4>
                        
                         <div class="card-text text-center">
-                     MBBS, DD (Singapore), DHRS, FDCS, FICD (USA) 
+                      FCPS (Medicine),MD (Cardiology),
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                      <span><a href="booking.php">Book Now</a></span>
+                      <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -495,22 +536,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Neonatology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span> Interventional & Clinical Cardiology</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Nargis Ara Begum</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. S M. Siddiqur Rahman</h4>
                        
                         <div class="card-text text-center">
-                     MBBS, FCPS (Paed), MD (Neonatology), Fellow New Born Medicine (Singapore)
+                     MBBS (Dhaka), D-Card (D.U) M.D (Cardiology)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -525,22 +566,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Diabetes & Endocrinology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology & Medicine</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Nazmul Islam</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Shafiqur Rahman Patwary</h4>
                        
                         <div class="card-text text-center">
-						MBBS, Diploma in Internal Medicine (UK), MRCP, US Board Certified in Medicine, Diabetes & Endocrine
+                    MBBS, MD (Cardiology), FCPS (Medicine), MCPS (Medicine),
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="booking.php">Book Now</a></span>
+                        <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -555,22 +596,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Cardiology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Rashid Un Nabi</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. M.A Baqui</h4>
                        
                         <div class="card-text text-center">
-						MBBS, M.phill (Radiotherapy) IAEA Fellow (Thailand), VARIAN Fellow (India) KFDA Fellow (Korea), UICC 
+						D-Card FACC (America)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                        <span><a href="booking.php">Book Now</a></span>
+                        <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -584,22 +625,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Urology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Specialist in Medicine & Pulmonologist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Col. Shameem Waheed</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Mirza Mohammad Hiron</h4>
                        
                         <div class="card-text text-center">
-						MBBS, FCPS (Surgery), FCPS (Urology), Fellow SIU
+						MBBS, FCPS (Medicine), MD (Chest), FCCP (USA), FRCP (Ire.), FRCP (Edin), FRCP (Glasgow)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                    <span><a href="booking.php">Book Now</a></span>
+                    <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -614,22 +655,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Oncology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Chest (Respiratory Medicine) Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Santanu Chaudhuri</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Mohammad Rofiqul Islam</h4>
                        
                         <div class="card-text text-center">
-						MBBS, DMRT, PGDHM, MD (Tata Memorial Hospital) DNB, M.Phil
+						MBBS (DMC), MD (Chest)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -644,22 +685,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Dermatology Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>Psychiatry & Psychotherapy</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
-                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <img class="card-img-top" src="img/Female_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Shah Ataur Rahman</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Jhunu Shamsun Nahar</h4>
                        
                         <div class="card-text text-center">
-						MBBS, Ph.D. (Japan), Postdoctoral fellow (Japan & USA) Trained in Cosmetic Dermatology (India, UAE)
+						FCPS (Psych), IFAPA (USA)
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -674,22 +715,22 @@ PGCert (Mental Health Service and Population Research, London (UK)
                  <div class="col-md-6 col-lg-3">
                  <div class="card">
                      <div class="card-header card_custom_header2 text-center">
-                     <span>Consultant, General Surgery</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+                     <span>General & Plastic Surgery</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
   </div>
                     <img class="card-img-top" src="img/Male_Doctor.png">
                     <div class="card-block">
                         <figure class="profile">
                             <img src="img/price2.png" class="profile-avatar" alt="">
                         </figure>
-                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Prof. Dr. Zahidul Haq</h4>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Tahmina Satter</h4>
                        
                         <div class="card-text text-center">
-						MBBS, FCPS (Surgery), FRCS (Glasgow), MS (surgery), Fellow Colorectal Surgery (Singapore)
+						 FCPS (Surgery), MS (Plastic Surgery),
                         </div>
                     </div>
                     <div class="card-footer text-center">
                        <span class="float-left leftone"></span>
-                       <span><a href="booking.php">Book Now</a></span>
+                       <span><a href="#">Book Now</a></span>
                        <span class="float-right rightone"></span>
                     </div>
                 </div>
@@ -701,14 +742,281 @@ PGCert (Mental Health Service and Population Research, London (UK)
              <!--                       -->  
             
             
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Orthopaedic Surgery (Arthroscopy & Joint Replacement)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Wakil Ahmed</h4>
+                       
+                        <div class="card-text text-center">
+						 MS (Ortho-Surgery), 2003, NITOR MMEd, 2012, CME
+
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                        <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+             <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Spine Surgery( Orthopaedic Spine Surgery)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Md. Kamrul Ahsan</h4>
+                       
+                        <div class="card-text text-center">
+						D-Ortho (DU) MS (Ortho)
+
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                      <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            
+              <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>D-Ortho (DU) MS (Ortho)</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. M. Fakhrul Islam</h4>
+                       
+                        <div class="card-text text-center">
+						MBBS, Ph.D. (Surgery)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                      <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Skin, Allergy & VD Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Zakir Hossain Galib</h4>
+                       
+                        <div class="card-text text-center">
+						MBBS, MD (Dermatology)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+             <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span> Ear Nose Throat & Head Neck Surgery</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Lt. Colonel (Retd) Prof. Dr. Md. Abdullah Hel Kafi</h4>
+                       
+                        <div class="card-text text-center">
+						 MBBS (Dhaka), MCPS (ENT), FCPS (ENT)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            
+             <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Diabetes, Hormone & Medicine Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Female_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. Sultana Marufa Shafin</h4>
+                       
+                        <div class="card-text text-center">
+						MBBS, MD (Endocrinology),
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                      <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Neonatal – Pediatric Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Professor Dr. Md. Sarwar Ferdous</h4>
+                       
+                        <div class="card-text text-center">
+						MBBS (DMC), MRCP (England), DCH (Ireland), FRCP (Edin).
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+                
+<!--                          -->
+            
+            
+             <!--                       -->  
+            
+            
+                 <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                     <div class="card-header card_custom_header2 text-center">
+                     <span>Paediatric Asthma, Allergy & Chest Disease Specialist</span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;">Dr. M.S. Khaled</h4>
+                       
+                        <div class="card-text text-center">
+						DCH MD(Pediatric) FCCP (America)
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                      <span><a href="#">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                </div>
+            </div>
+               
+                
+<!--                          -->
+
+ <?php while($data=$select_query->fetch_assoc()){ ?>
+             <div class="col-md-6 col-lg-3">
+                 <div class="card">
+                    <div class="card-header card_custom_header2 text-center">
+                     <span><?php echo $data['Department']; ?></span><span class="card_img"> <img src="img/card_logo1.png" class="imh-fluid" alt="card_logo"> </span>
+  </div>
+                    <img class="card-img-top" src="img/Male_Doctor.png">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img src="img/price2.png" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title2 text-center mt-3 custom_last" style="color: #56d47e !important;"><?php echo $data['Name']; ?></h4>
+                       
+                        <div class="card-text text-center">
+                      <?php echo $data['Email']; ?>
+                        </div>
+                         <div class="card-text text-center">
+                  <?php echo $data['Details']; ?>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                       <span class="float-left leftone"></span>
+                       
+                       <span><a href="booking.html">Book Now</a></span>
+                       <span class="float-right rightone"></span>
+                    </div>
+                    
+                </div>
+                  
+            </div>
+               <?php } ?>
+                    <?php } else{  } ?> 
                 
           
             </div>
          
-            
+             </div></div>
         </div>
     </div>
-  
+
     
 </section>
 

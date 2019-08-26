@@ -1,4 +1,5 @@
-<?php
+ 
+ <?php
 
 include "lib/connection.php";
 $result ="";

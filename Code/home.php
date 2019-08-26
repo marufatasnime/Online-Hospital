@@ -152,7 +152,7 @@
                             <div>
 
                                 <div class="join_team text-center">
-                                    <h3>Which Department You want?</h3>
+                                    <h3>Search Doctor's Name?</h3>
                                     <div class="text">
                                         <form action="seedoctorSearch.php" class="signup_form" method="post">
                                             <input class="custom_input" name="name" type="text" />
